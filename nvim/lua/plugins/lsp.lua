@@ -1,0 +1,111 @@
+return {}
+-- return {
+--   {
+--     'VonHeikemen/lsp-zero.nvim',
+--     branch = 'v2.x',
+--     lazy = false,
+--     dependencies = {
+--       -- LSP Support
+--       -- {'neovim/nvim-lspconfig'},
+--       {
+--         'williamboman/mason.nvim',
+--         build = function()
+--           pcall(vim.cmd, 'MasonUpdate')
+--         end,
+--       },
+--       {'williamboman/mason-lspconfig.nvim'},
+--
+--       -- Autocompletion
+--       {'hrsh7th/nvim-cmp'},
+--       {'hrsh7th/cmp-buffer'},
+--       {'hrsh7th/cmp-path'},
+--       {'hrsh7th/cmp-nvim-lsp'},
+--       {'hrsh7th/cmp-nvim-lua'},
+--       {'saadparwaiz1/cmp_luasnip'},
+--
+--       -- Snippets
+--       {'L3MON4D3/LuaSnip'},
+--       {'rafamadriz/friendly-snippets'},
+--       { "glepnir/lspsaga.nvim", branch = "main" },
+--       "onsails/lspkind.nvim",
+--       "RobertBrunhage/flutter-riverpod-snippets",
+--       "Neevash/awesome-flutter-snippets",
+--
+--       -- misc
+--       "j-hui/fidget.nvim",
+--     },
+--     config = function()
+--       local lsp = require('lsp-zero').preset({})
+--       -- local lsp_config = require("lspconfig");
+--
+--       lsp.on_attach(function(client, bufnr)
+--         lsp.default_keymaps({buffer = bufnr})
+--       end)
+--
+--       -- lsp_config["dartls"].setup({
+--       --   on_attach = on_attach,
+--       --   root_dir = lsp_config.util.root_pattern('.git'),
+--       --   settings = {
+--       --     dart = {
+--       --       analysisExcludedFolders = {
+--       --         vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
+--       --         vim.fn.expand("$HOME/.pub-cache"),
+--       --         vim.fn.expand("/opt/homebrew/"),
+--       --       },
+--       --       updateImportsOnRename = true,
+--       --       completeFunctionCalls = true,
+--       --       showTodos = true,
+--       --     }
+--       --   },
+--       -- })
+--
+--       vim.diagnostic.config({
+--         virtual_text = true,
+--         signs = false,
+--       })
+--
+--       lsp.setup()
+--
+--       local cmp = require('cmp')
+--       local cmp_action = require('lsp-zero').cmp_action()
+--       require('luasnip.loaders.from_vscode').lazy_load()
+--
+--       vim.opt.completeopt = { "menu", "menuone", "noselect" }
+--       cmp.setup({
+--         snippet = {
+--           expand = function(args)
+--             luasnip.lsp_expand(args.body)
+--           end,
+--         },
+--         mapping = cmp.mapping.preset.insert({
+--           ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+--           ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+--           ["<C-f>"] = cmp.mapping.scroll_docs(4),
+--           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+--           ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+--           ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+--           ["<Tab>"] = cmp.mapping(function(fallback)
+--             if cmp.visible() then
+--               local entry = cmp.get_selected_entry()
+--               if not entry then
+--                 cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+--               else
+--                 cmp.confirm()
+--               end
+--             else
+--               fallback()
+--             end
+--           end, {"i","s"}),
+--         }),
+--         sources = cmp.config.sources({
+--           { name = "nvim_lsp" }, -- lsp
+--           { name = "luasnip" }, -- snippets
+--           { name = "buffer" }, -- text within current buffer
+--           { name = "path" }, -- file system paths
+--         }),
+--       })
+--
+--       require("fidget").setup({})
+--     end
+--   },
+-- }
