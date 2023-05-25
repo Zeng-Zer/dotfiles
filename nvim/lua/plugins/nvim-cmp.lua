@@ -140,7 +140,7 @@ return {
           {
             name = "nvim_lsp",
             priority = 10,
-            entry_filter = function(entry, ctx)
+            entry_filter = function(entry, _)
               local kind = require('cmp.types').lsp.CompletionItemKind[entry:get_kind()]
               if kind == "Text" then return false end
               return true
@@ -155,7 +155,6 @@ return {
       -- auto format on save for flutter files
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = '*.dart',
-        buffer = buffer,
         callback = function()
           vim.lsp.buf.format { async = false }
         end

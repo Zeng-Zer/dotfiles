@@ -11,7 +11,11 @@ return {
       require("flutter-tools").setup({
         lsp = {
           settings = {
-            lineLength = 100
+            analysisExcludedFolders = {
+              vim.fn.expand("$HOME/.pub-cache"),
+              vim.fn.expand("/opt/homebrew/"),
+            },
+            lineLength = 100,
           }
         }
       })

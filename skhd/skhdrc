@@ -38,6 +38,9 @@ alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
 
+# Cycle display
+alt - d : yabai -m display --focus next || yabai -m display --focus 1
+
 # Move windows to space
 shift + alt - 1 : yabai -m window --space 1;
 shift + alt - 2 : yabai -m window --space 2;
@@ -47,8 +50,11 @@ shift + alt - 5 : yabai -m window --space 5;
 shift + alt - 6 : yabai -m window --space 6;
 shift + alt - 7 : yabai -m window --space 7;
 
+# Resize windows
 alt + cmd - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
 alt + cmd - j : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
 alt + cmd - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
 alt + cmd - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
 
+# Shortcut apps
+alt + cmd - return : osascript /Users/david/Scripts/new-iterm-window.scpt

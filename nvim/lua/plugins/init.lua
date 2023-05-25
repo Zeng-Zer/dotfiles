@@ -7,7 +7,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     event = "VeryLazy",
-    config = function(_, opts)
+    config = function()
       require("catppuccin").setup({
         integrations = {
           which_key = true,
