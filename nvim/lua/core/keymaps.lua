@@ -2,7 +2,6 @@ local keymap = vim.keymap
 
 -- GENERAL KEYMAPS
 keymap.set({"n", "x", "v", "i"}, "<F1>", "<nop>") -- Remove f1 help
-keymap.set("n", "x", '"_x') -- don't override clipboard
 
 -- LEADER KEYMAPS
 -- s | split views
@@ -73,15 +72,21 @@ for type, icon in pairs(signs) do
 end
 
 -- Harpoon
-vim.keymap.set("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", { desc = "harpoon mark file", noremap = true })
-vim.keymap.set("n", "<leader>hm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "harpoon menu", noremap = true })
-vim.keymap.set("n", "<leader>h1", ":lua require('harpoon.ui').nav_file(1)<CR>", { desc = "harpoon file 1", noremap = true })
-vim.keymap.set("n", "<leader>h2", ":lua require('harpoon.ui').nav_file(2)<CR>", { desc = "harpoon file 2", noremap = true })
-vim.keymap.set("n", "<leader>h3", ":lua require('harpoon.ui').nav_file(3)<CR>", { desc = "harpoon file 3", noremap = true })
-vim.keymap.set("n", "<leader>h4", ":lua require('harpoon.ui').nav_file(4)<CR>", { desc = "harpoon file 4", noremap = true })
-vim.keymap.set("n", "<leader>h5", ":lua require('harpoon.ui').nav_file(5)<CR>", { desc = "harpoon file 5", noremap = true })
-vim.keymap.set("n", "<leader>h6", ":lua require('harpoon.ui').nav_file(6)<CR>", { desc = "harpoon file 6", noremap = true })
-vim.keymap.set("n", "<leader>h7", ":lua require('harpoon.ui').nav_file(7)<CR>", { desc = "harpoon file 7", noremap = true })
-vim.keymap.set("n", "<leader>h8", ":lua require('harpoon.ui').nav_file(8)<CR>", { desc = "harpoon file 8", noremap = true })
-vim.keymap.set("n", "<leader>h9", ":lua require('harpoon.ui').nav_file(9)<CR>", { desc = "harpoon file 9", noremap = true })
-vim.keymap.set("n", "<leader>h0", ":lua require('harpoon.ui').nav_file(10)<CR>", { desc = "harpoon file 10", noremap = true })
+keymap.set("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", { desc = "harpoon mark file", noremap = true })
+keymap.set("n", "<leader>hm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "harpoon menu", noremap = true })
+keymap.set("n", "<leader>h1", ":lua require('harpoon.ui').nav_file(1)<CR>", { desc = "harpoon file 1", noremap = true })
+keymap.set("n", "<leader>h2", ":lua require('harpoon.ui').nav_file(2)<CR>", { desc = "harpoon file 2", noremap = true })
+keymap.set("n", "<leader>h3", ":lua require('harpoon.ui').nav_file(3)<CR>", { desc = "harpoon file 3", noremap = true })
+keymap.set("n", "<leader>h4", ":lua require('harpoon.ui').nav_file(4)<CR>", { desc = "harpoon file 4", noremap = true })
+keymap.set("n", "<leader>h5", ":lua require('harpoon.ui').nav_file(5)<CR>", { desc = "harpoon file 5", noremap = true })
+keymap.set("n", "<leader>h6", ":lua require('harpoon.ui').nav_file(6)<CR>", { desc = "harpoon file 6", noremap = true })
+keymap.set("n", "<leader>h7", ":lua require('harpoon.ui').nav_file(7)<CR>", { desc = "harpoon file 7", noremap = true })
+keymap.set("n", "<leader>h8", ":lua require('harpoon.ui').nav_file(8)<CR>", { desc = "harpoon file 8", noremap = true })
+keymap.set("n", "<leader>h9", ":lua require('harpoon.ui').nav_file(9)<CR>", { desc = "harpoon file 9", noremap = true })
+keymap.set("n", "<leader>h0", ":lua require('harpoon.ui').nav_file(10)<CR>", { desc = "harpoon file 10", noremap = true })
+
+-- tmux
+keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "window left" })
+keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "window right" })
+keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "window down" })
+keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "window up" })
