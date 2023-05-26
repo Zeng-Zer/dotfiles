@@ -152,13 +152,14 @@ return {
         }),
       })
 
-      -- auto format on save for flutter files
+      -- auto format on save for dart files
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = '*.dart',
         callback = function()
           vim.lsp.buf.format { async = false }
         end
       })
+
       require("fidget").setup({})
     end,
   },

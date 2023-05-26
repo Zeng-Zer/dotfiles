@@ -13,8 +13,8 @@ bind -M insert \cf accept-autosuggestion
 ## Aliases
 alias vim=nvim
 # nvim edit confs
-alias nef="nvim ~/.config/fish/config.fish"
-alias net="nvim ~/.config/tmux/tmux.conf"
-alias nen="nvim ~/.config/nvim/init.lua"
-alias ney="nvim ~/.config/yabai/yabairc"
-alias nes="nvim ~/.config/skhd/skhdrc"
+alias nef='nvim ~/.config/fish/config.fish -c "cd ~/.config/fish/"'
+alias net='nvim ~/.config/tmux/tmux.conf -c "cd ~/.config/tmux/"'
+alias nen='nvim ~/.config/nvim/ -c "cd ~/.config/nvim/"'
+alias ney='nvim ~/.config/yabai/yabairc -c "cd ~/.config/yabai/"'
+alias nes='nvim ~/.config/skhd/skhdrc -c "cd ~/.config/skhd/"'

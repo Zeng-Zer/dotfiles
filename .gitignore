@@ -4,3 +4,4 @@ fish/fish_variables
 fish/fishd.tmp.*
 nvim/lazy-lock.json
 tmuxinator
+configstore

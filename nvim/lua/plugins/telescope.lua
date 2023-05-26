@@ -4,6 +4,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
+      "nvim-telescope/telescope-file-browser.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     lazy = false,
@@ -31,11 +32,18 @@ return {
               }
             }
           }
+        },
+        extensions = {
+          file_browser = {
+            grouped = true,
+          }
         }
       })
+      vim.api.nvim_set_keymap("n", "<leader>fd", ":Telescope file_browser<CR>", { noremap = true })
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
       telescope.load_extension("flutter")
+      telescope.load_extension("file_browser")
     end
   },
 }
