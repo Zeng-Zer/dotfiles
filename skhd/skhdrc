@@ -62,4 +62,4 @@ alt + cmd - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -
 alt + cmd - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
 
 # Shortcut apps
-alt + cmd - return : osascript /Users/david/Scripts/new-iterm-window.scpt
+alt + cmd - return : osascript ~/Scripts/new-iterm-window.scpt
