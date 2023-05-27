@@ -4,12 +4,16 @@ return {
     branch = "main",
     lazy = false,
     dependencies = {
-      {"nvim-tree/nvim-web-devicons"},
+      "nvim-tree/nvim-web-devicons",
+      "catppuccin/nvim",
       --Please make sure you install markdown and markdown_inline parser
-      {"nvim-treesitter/nvim-treesitter"}
+      "nvim-treesitter/nvim-treesitter"
     },
     config = function()
       require("lspsaga").setup({
+        ui = {
+          kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+        },
         code_action = {
           num_shortcut = true,
           show_server_name = false,
@@ -18,6 +22,21 @@ return {
             -- string | table type
             quit = { "q", "<ESC>" },
             exec = "<CR>",
+          },
+        },
+        finder = {
+          max_height = 0.5,
+          min_width = 30,
+          force_max_height = false,
+          keys = {
+            jump_to = 'p',
+            expand_or_jump = 'o',
+            vsplit = 's',
+            split = 'i',
+            tabe = 't',
+            tabnew = 'r',
+            quit = { 'q', '<ESC>' },
+            close_in_preview = '<ESC>',
           },
         },
         lightbulb = {

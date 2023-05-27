@@ -42,3 +42,6 @@ opt.iskeyword:append("-")
 
 -- completion window
 opt.pumheight = 30
+
+-- enable global status line
+vim.opt.laststatus = 3

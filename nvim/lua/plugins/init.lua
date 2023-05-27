@@ -1,21 +1,9 @@
+-- TODO require config from separate files
 return {
   -- theme
   "MunifTanjim/nui.nvim",
   { "rebelot/kanagawa.nvim", event = "VeryLazy" },
   { "NvChad/nvim-colorizer.lua", ft = { "css" } },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    event = "VeryLazy",
-    config = function()
-      require("catppuccin").setup({
-        integrations = {
-          which_key = true,
-          telescope = true,
-        }
-      })
-    end
-  },
   -- editor
   {
     "ThePrimeagen/harpoon",
@@ -56,13 +44,6 @@ return {
   },
   "j-hui/fidget.nvim",
   -- coding
-  {
-    "lewis6991/gitsigns.nvim",
-    lazy = false,
-    config = function()
-      require("gitsigns").setup()
-    end
-  },
   { "github/copilot.vim", lazy = false },
   {
     "mbbill/undotree",

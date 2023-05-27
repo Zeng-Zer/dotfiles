@@ -3,7 +3,8 @@ local function my_on_attach(bufnr)
 
   api.config.mappings.default_on_attach(bufnr)
   vim.keymap.del('n', '<C-k>', { buffer = bufnr })
-  ---
+
+  -- quit nvim if nvim is last opened buffer
   vim.api.nvim_create_autocmd("QuitPre", {
     callback = function()
       local invalid_win = {}
@@ -32,16 +33,6 @@ return {
       require("nvim-tree").setup({
         diagnostics = {
           enable = true
-        },
-        renderer = {
-          icons = {
-            glyphs = {
-              folder = {
-                arrow_closed = "", -- arrow when folder is closed
-                arrow_open = "", -- arrow when folder is open
-              },
-            },
-          },
         },
         actions = {
           open_file = {

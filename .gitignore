@@ -5,3 +5,6 @@ fish/fishd.tmp.*
 nvim/lazy-lock.json
 tmuxinator
 configstore
+alacritty
+.DS_Store
+Ryujinx
