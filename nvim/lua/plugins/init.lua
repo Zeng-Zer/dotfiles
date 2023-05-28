@@ -7,7 +7,6 @@ return {
   -- editor
   {
     "ThePrimeagen/harpoon",
-    lazy = false,
   },
   {
     "nvim-zh/colorful-winsep.nvim",
@@ -54,7 +53,6 @@ return {
   },
   { "szw/vim-maximizer", lazy = false }, -- maximizes and restores current window
   { "tpope/vim-surround", lazy = false },
-  { "vim-scripts/ReplaceWithRegister", lazy = false },
   {
     "folke/which-key.nvim",
     lazy = false,
@@ -67,12 +65,6 @@ return {
         }
       })
     end,
-  },
-  "j-hui/fidget.nvim",
-  -- coding
-  {
-    "mbbill/undotree",
-    cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
   },
   -- misc
   { "christoomey/vim-tmux-navigator", lazy = false },

@@ -1,12 +1,10 @@
 return {
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
+    lazy = false,
+    -- event = "VeryLazy",
     dependencies = {
-      {"MunifTanjim/nui.nvim", lazy = false},
+      "MunifTanjim/nui.nvim",
     },
     config = function()
       require("noice").setup({
@@ -18,6 +16,9 @@ return {
             search_up = false,
             help = false,
           },
+        },
+        messages = {
+          view_search = "virtualtext",
         },
         lsp = {
           progress = {

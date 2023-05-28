@@ -2,7 +2,6 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = { "rcarriga/nvim-dap-ui" },
-    lazy = false,
     config = function()
       local dap = require("dap")
       dap.adapters.dart = {

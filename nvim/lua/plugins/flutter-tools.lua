@@ -1,8 +1,10 @@
 return {
   {
     'akinsho/flutter-tools.nvim',
-    lazy = false,
+    -- lazy = false,
+    ft = { 'dart' },
     dependencies = {
+      'nvim-telescope/telescope.nvim',
       'nvim-lua/plenary.nvim',
       "neovim/nvim-lspconfig",
       'stevearc/dressing.nvim', -- optional for vim.ui.select
@@ -43,6 +45,10 @@ return {
           }
         }
       })
+
+      local telescope = require('telescope')
+      vim.keymap.set('n', '<leader>rf', telescope.extensions.flutter.commands, { desc = "Telescope flutter commands" })
+      telescope.load_extension("flutter")
     end
   }
 }

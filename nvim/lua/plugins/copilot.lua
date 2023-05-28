@@ -7,7 +7,6 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-
       -- close cmp when accepting suggestion
       local cmp = require("cmp")
       local suggestion = require("copilot.suggestion")
@@ -28,7 +27,7 @@ return {
       require("copilot").setup({
         panel = {
           enabled = true,
-          auto_refresh = false,
+          auto_refresh = true,
           keymap = {
             jump_prev = "[[",
             jump_next = "]]",

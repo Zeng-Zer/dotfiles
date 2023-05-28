@@ -7,7 +7,8 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
-    lazy = false,
+    cmd = 'Telescope',
+    -- lazy = false,
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -72,10 +73,9 @@ return {
           }
         }
       })
-      vim.api.nvim_set_keymap("n", "<leader>fd", ":Telescope file_browser<CR>", { noremap = true })
+
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
-      telescope.load_extension("flutter")
       telescope.load_extension("file_browser")
     end
   },
