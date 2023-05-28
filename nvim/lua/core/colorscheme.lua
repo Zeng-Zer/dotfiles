@@ -1,5 +1,12 @@
-local status, _ = pcall(vim.cmd, "colorscheme catppuccin-macchiato")
-if not status then
-  print("Colorscheme not found!")
-  return
-end
+vim.cmd [[ colorscheme catppuccin-macchiato ]]
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        package.loaded["feline"] = nil
+        package.loaded["catppuccin.groups.integrations.feline"] = nil
+        require("feline").setup {
+            components = require("catppuccin.groups.integrations.feline").get(),
+        }
+    end,
+})

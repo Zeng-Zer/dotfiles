@@ -17,7 +17,7 @@ return {
         code_action = {
           num_shortcut = true,
           show_server_name = false,
-          extend_gitsigns = true,
+          extend_gitsigns = false,
           keys = {
             -- string | table type
             quit = { "q", "<ESC>" },
@@ -134,14 +134,24 @@ return {
           completeopt = "menu,menuone,noinsert",
         },
         mapping = cmp.mapping.preset.insert({
+          ["<C-f>"] = cmp.config.disable,
+          ["<C-n>"] = cmp.config.disable,
+          ["<C-p>"] = cmp.config.disable,
           ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), -- previous suggestion
           ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), -- next suggestion
-          ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 5 }), -- previous suggestion
-          ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 5 }), -- next suggestion
+          ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- previous suggestion
+          ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- next suggestion
           ["<C-b>"] = cmp.mapping.scroll_docs(-5),
-          ["<C-f>"] = cmp.mapping.scroll_docs(5),
-          ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-          ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+          ["<C-v>"] = cmp.mapping.scroll_docs(5),
+          -- toggle completion menu because of copilot
+          ["<C-e>"] = function()
+            if cmp.visible() then
+              cmp.abort()
+            else
+              cmp.complete()
+            end
+          end,
+          -- ["<C-e>"] = cmp.mapping.abort(), -- close completion window
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               local entry = cmp.get_selected_entry()

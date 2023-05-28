@@ -68,4 +68,4 @@ alt + cmd - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m
 fn - f : ~/.config/scripts/overnotch.sh
 
 # Shortcut apps
-alt + cmd - return : osascript ~/.config/scripts/new-iterm-window.scpt
+alt + cmd - return : open -na kitty

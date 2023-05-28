@@ -8,7 +8,7 @@ return {
         flavour = "macchiato",
         transparent_background = true,
         integrations = {
-          which_key = true,
+          which_key = { enabled = true, border = false },
           telescope = true,
           gitsigns = true,
           cmp = true,
