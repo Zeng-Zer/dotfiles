@@ -15,6 +15,7 @@ set fish_cursor_visual block
 # vim keybind 
 bind -M default \cr redo
 bind -M insert \cf accept-autosuggestion
+bind -M insert \cw forward-word
 
 ## Aliases
 alias vim=nvim

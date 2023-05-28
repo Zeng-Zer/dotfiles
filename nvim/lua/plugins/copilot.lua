@@ -1,9 +1,30 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+    },
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
+
+      -- close cmp when accepting suggestion
+      local cmp = require("cmp")
+      local suggestion = require("copilot.suggestion")
+      local accept_suggest_close_cmp = function()
+        if suggestion.is_visible() then
+          suggestion.accept()
+          if cmp.visible() then
+            cmp.abort()
+          end
+        end
+      end
+      -- map <C-f> like fish shell
+      vim.keymap.set("i", "<C-f>", accept_suggest_close_cmp, {
+        desc = "[copilot] accept suggestion",
+        silent = true,
+      })
+
       require("copilot").setup({
         panel = {
           enabled = true,
@@ -13,6 +34,7 @@ return {
             jump_next = "]]",
             accept = "<CR>",
             refresh = "gr",
+            open = false
           },
           layout = {
             position = "bottom", -- | top | left | right
@@ -24,9 +46,10 @@ return {
           auto_trigger = true,
           debounce = 75,
           keymap = {
-            accept = "<C-f>",
-            accept_word = false,
-            accept_line = false,
+            -- accept = "<C-f>",
+            accept = false,
+            accept_word = "<C-w>",
+            accept_line = "<C-l>",
             next = "<C-n>",
             prev = "<C-p>",
             dismiss = "<C-c>",

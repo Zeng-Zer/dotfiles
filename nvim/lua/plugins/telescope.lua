@@ -21,12 +21,24 @@ return {
 
       telescope.setup({
         defaults = {
-          sorting_strategy = "ascending",
-          layout_strategy = "horizontal",
+          sorting_strategy = 'ascending',
+          layout_strategy = "flex", -- horizontal, vertical, center, flex, cursor, bottom_pane
           layout_config = {
+            scroll_speed = 4,
+            prompt_position = 'top',
             horizontal = {
-              prompt_position = "top"
-            }
+              preview_cutoff = 100,
+              preview_width = 0.5,
+            },
+            vertical = {
+              mirror = true,
+              preview_cutoff = 0.4,
+            },
+            flex = {
+              flip_columns = 110,
+            },
+            height = 0.94,
+            width = 0.86,
           },
           mappings = {
             i = {
