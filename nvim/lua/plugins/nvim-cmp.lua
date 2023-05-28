@@ -85,11 +85,9 @@ return {
       "hrsh7th/cmp-path",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      -- "RobertBrunhage/flutter-riverpod-snippets",
       "Zeng-Zer/flutter-riverpod-snippets",
       "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim",
-      "j-hui/fidget.nvim",
     },
     config = function()
       local cmp = require("cmp")
@@ -151,7 +149,6 @@ return {
               cmp.complete()
             end
           end,
-          -- ["<C-e>"] = cmp.mapping.abort(), -- close completion window
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               local entry = cmp.get_selected_entry()
@@ -188,8 +185,6 @@ return {
           vim.lsp.buf.format { async = false }
         end
       })
-
-      require("fidget").setup({})
     end,
   },
 }
