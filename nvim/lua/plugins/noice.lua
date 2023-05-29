@@ -18,6 +18,7 @@ return {
           },
         },
         messages = {
+          enabled = true,
           view_search = "virtualtext",
         },
         lsp = {
@@ -30,6 +31,10 @@ return {
         },
         views = {
           mini = {
+            align = "message-left",
+            position = {
+              col = 0
+            },
             win_options = {
               winblend = 0
             },

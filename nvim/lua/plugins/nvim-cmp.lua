@@ -1,6 +1,13 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -14,7 +21,6 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      require("luasnip.loaders.from_vscode").lazy_load()
 
       vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -62,7 +68,7 @@ return {
           ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- previous suggestion
           ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- next suggestion
           ["<C-b>"] = cmp.mapping.scroll_docs(-5),
-          ["<C-v>"] = cmp.mapping.scroll_docs(5),
+          ["<C-x>"] = cmp.mapping.scroll_docs(5),
           -- toggle completion menu because of copilot
           ["<C-e>"] = function()
             if cmp.visible() then

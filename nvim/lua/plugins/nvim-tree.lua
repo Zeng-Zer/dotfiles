@@ -11,6 +11,8 @@ return {
         -- quit nvim if nvim is last opened buffer
         vim.api.nvim_create_autocmd("QuitPre", {
           callback = function()
+            require("noice.message.router").disable()
+
             local invalid_win = {}
             local wins = vim.api.nvim_list_wins()
             for _, w in ipairs(wins) do
@@ -19,6 +21,9 @@ return {
                 table.insert(invalid_win, w)
               end
             end
+
+            require("noice.message.router").enable()
+
             if #invalid_win == #wins - 1 then
               -- Should quit, so we close all invalid windows.
               for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end

@@ -8,7 +8,6 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     cmd = 'Telescope',
-    -- lazy = false,
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -25,7 +24,7 @@ return {
           sorting_strategy = 'ascending',
           layout_strategy = "flex", -- horizontal, vertical, center, flex, cursor, bottom_pane
           layout_config = {
-            scroll_speed = 4,
+            scroll_speed = 5,
             prompt_position = 'top',
             horizontal = {
               preview_cutoff = 100,
@@ -45,7 +44,7 @@ return {
             i = {
               ["<C-n>"] = actions.nop,
               ["<C-p>"] = actions.nop,
-              ["<C-x>"] = actions.nop,
+              ["<C-v>"] = actions.select_vertical,
               ["<C-c>"] = actions.select_horizontal,
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-j>"] = actions.move_selection_next,
@@ -53,7 +52,7 @@ return {
               ["<C-d>"] = shift_next,
               ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
               ["<C-b>"] = actions.preview_scrolling_up,
-              ["<C-v>"] = actions.preview_scrolling_down,
+              ["<C-x>"] = actions.preview_scrolling_down,
               ["<esc>"] = actions.close,
             }
           }
@@ -62,7 +61,7 @@ return {
           buffers = {
             mappings = {
               i = {
-                ["<C-x>"] = actions.delete_buffer + actions.move_to_top,
+                ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
               }
             }
           }
@@ -77,6 +76,8 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
       telescope.load_extension("file_browser")
+      telescope.load_extension("noice")
+      telescope.load_extension("flutter")
     end
   },
 }

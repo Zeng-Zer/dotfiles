@@ -1,7 +1,6 @@
 return {
   {
     'akinsho/flutter-tools.nvim',
-    -- lazy = false,
     ft = { 'dart' },
     dependencies = {
       'nvim-telescope/telescope.nvim',
@@ -45,10 +44,6 @@ return {
           }
         }
       })
-
-      local telescope = require('telescope')
-      vim.keymap.set('n', '<leader>rf', telescope.extensions.flutter.commands, { desc = "Telescope flutter commands" })
-      telescope.load_extension("flutter")
     end
   }
 }
