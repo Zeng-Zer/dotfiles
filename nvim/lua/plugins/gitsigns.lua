@@ -4,9 +4,12 @@ return {
     lazy = false,
     config = function()
       require('gitsigns').setup{
-        current_line_blame = true,
+        current_line_blame = false,
         current_line_blame_opts = {
           delay = 0,
+        },
+        preview_config = {
+          border = 'rounded',
         },
         on_attach = function(bufnr)
           local gs = package.loaded.gitsigns

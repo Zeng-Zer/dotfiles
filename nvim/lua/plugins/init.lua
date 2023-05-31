@@ -61,7 +61,7 @@ return {
       vim.o.timeoutlen = 500
       require("which-key").setup({
         window = {
-          border = "single"
+          border = "rounded"
         }
       })
     end,
@@ -79,7 +79,7 @@ return {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
     config = function()
-      vim.g.startuptime_tries = 10
+      vim.g.startuptime_tries = 30
     end,
   },
 }

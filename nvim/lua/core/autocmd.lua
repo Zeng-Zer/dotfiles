@@ -16,6 +16,9 @@ vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave", "FocusLost" }, {
     end
 
     vim.cmd([[silent! update]])
+
+    -- update nvim tree
+    require("nvim-tree.modified").reload()
   end,
   pattern = "*",
   group = augroup("autosave"),
