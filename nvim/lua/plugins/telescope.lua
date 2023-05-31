@@ -21,6 +21,7 @@ return {
 
       telescope.setup({
         defaults = {
+          path_display = {"smart"},
           sorting_strategy = 'ascending',
           layout_strategy = "flex", -- horizontal, vertical, center, flex, cursor, bottom_pane
           layout_config = {

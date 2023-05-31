@@ -26,7 +26,8 @@ return {
             enabled = true,
           },
           signature = {
-            enabled = false,
+            enabled = true,
+            -- lsp_doc_border = true,
           },
         },
         views = {

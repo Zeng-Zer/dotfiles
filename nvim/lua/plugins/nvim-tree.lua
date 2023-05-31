@@ -36,6 +36,8 @@ return {
 
       vim.g.loaded = 1
       vim.g.loaded_netwrPlugin = 1
+
+      -- SETUP
       require("nvim-tree").setup({
         diagnostics = {
           enable = true
@@ -46,6 +48,9 @@ return {
               enable = false,
             },
           },
+        },
+        modified = {
+          enable = true,
         },
         git = {
           enable = true,

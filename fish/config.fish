@@ -27,3 +27,4 @@ alias ney='nvim ~/.config/yabai/yabairc -c "cd ~/.config/yabai/"'
 alias nes='nvim ~/.config/skhd/skhdrc -c "cd ~/.config/skhd/"'
 alias nek='nvim ~/.config/kitty/kitty.conf -c "cd ~/.config/kitty/"'
 alias nea='nvim ~/.config/alacritty/alacritty.yml -c "cd ~/.config/alacritty/"'
+fish_add_path /Users/david/.spicetify

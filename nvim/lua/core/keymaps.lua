@@ -35,6 +35,9 @@ keymap.set('n', '<leader>rf', ":Telescope flutter commands<CR>", { desc = "teles
 -- LAZY
 keymap.set("n", "<leader>lh", ":Lazy home<CR>", { desc = "lazy home" }) -- Display lazy home | lh = lazy home
 
+-- NOICE
+keymap.set("n", "<leader>nl", ":Noice last<CR>", { desc = "noice last" }) -- Display last noice message
+
 -- LSP
 keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "lsp restart" }) -- mapping to restart lsp if necessary
 keymap.set("n", "gf", ":Lspsaga lsp_finder<CR>",  { desc = "lspsaga finder" }) -- show definition, references

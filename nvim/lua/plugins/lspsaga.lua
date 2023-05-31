@@ -1,6 +1,6 @@
 return {
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     branch = "main",
     lazy = false,
     dependencies = {
@@ -13,6 +13,11 @@ return {
       require("lspsaga").setup({
         ui = {
           kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+          border = "rounded",
+        },
+        scroll_preview = {
+          scroll_down = "<C-j>",
+          scroll_up = "<C-k>",
         },
         code_action = {
           num_shortcut = true,
@@ -30,9 +35,9 @@ return {
           force_max_height = false,
           keys = {
             jump_to = 'p',
-            expand_or_jump = 'o',
-            vsplit = 's',
-            split = 'i',
+            expand_or_jump = '<CR>',
+            vsplit = 'v',
+            split = 'c',
             tabe = 't',
             tabnew = 'r',
             quit = { 'q', '<ESC>' },
@@ -43,7 +48,9 @@ return {
           enable = false,
         },
         symbol_in_winbar = {
-          enable = false,
+          enable = true,
+          show_file = true,
+          ignore_patterns = { '' }
         },
         diagnostic = {
           on_insert = false,
@@ -73,6 +80,27 @@ return {
           confirm = "<CR>",
           in_select = true,
         },
+      })
+
+      -- Show if file has been modified in the winbar
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('LspsagaSymbols', { clear = false }),
+        callback = function(opt)
+          local winbar = vim.o.winbar
+          local winid = vim.api.nvim_get_current_win()
+          if vim.api.nvim_get_current_buf() ~= opt.buf then
+            return
+          end
+
+          local readonly = "%{&readonly?\"🔒 \":\"\"}"
+          local modified = "%{&modified?\" ●\":\"\"}"
+
+          vim.api.nvim_set_option_value(
+            'winbar',
+            readonly .. winbar .. modified,
+            { scope = 'local', win = winid }
+          )
+        end
       })
     end
   },
