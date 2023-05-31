@@ -100,14 +100,6 @@ return {
           { name = "path", priority = 8 }, -- file system paths
         }),
       })
-
-      -- auto format on save for dart files
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = '*.dart',
-        callback = function()
-          vim.lsp.buf.format { async = false }
-        end
-      })
     end,
   },
 }

@@ -45,5 +45,9 @@ return {
         }
       })
     end
+  },
+  {
+    "f-person/nvim-sort-dart-imports",
+    ft = "dart",
   }
 }

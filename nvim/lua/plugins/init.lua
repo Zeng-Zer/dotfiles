@@ -67,7 +67,14 @@ return {
     end,
   },
   -- misc
-  { "christoomey/vim-tmux-navigator", lazy = false },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    config = function()
+      -- vim.g.tmux_navigator_save_on_switch = 1
+      -- vim.g.tmux_navigator_disable_when_zoomed = 1
+    end
+  },
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
