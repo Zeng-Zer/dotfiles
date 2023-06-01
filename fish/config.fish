@@ -22,7 +22,7 @@ alias vim=nvim
 # nvim edit confs
 alias nef='nvim ~/.config/fish/config.fish -c "cd ~/.config/fish/"'
 alias net='nvim ~/.config/tmux/tmux.conf -c "cd ~/.config/tmux/"'
-alias nen='nvim ~/.config/nvim/ -c "cd ~/.config/nvim/"'
+alias nen='nvim ~/.config/nvim/lua/plugins/init.lua -c "cd ~/.config/nvim/"'
 alias ney='nvim ~/.config/yabai/yabairc -c "cd ~/.config/yabai/"'
 alias nes='nvim ~/.config/skhd/skhdrc -c "cd ~/.config/skhd/"'
 alias nek='nvim ~/.config/kitty/kitty.conf -c "cd ~/.config/kitty/"'

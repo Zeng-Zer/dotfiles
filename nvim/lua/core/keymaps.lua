@@ -2,6 +2,7 @@ local keymap = vim.keymap
 
 -- GENERAL KEYMAPS
 keymap.set({"n", "x", "v", "i"}, "<F1>", "<nop>") -- Remove f1 help
+keymap.set({"n", "x", "v", "i"}, "<F3>", ":MaximizerToggle<CR>") -- Toggle maximize
 keymap.set("n", "<C-w>c", ":split<CR>") -- Remove f1 help
 
 -- TABS
@@ -11,11 +12,11 @@ keymap.set("n", "[t", ":tabp<CR>", { desc = "previous tab" })
 keymap.set("n", "]t", ":tabn<CR>", { desc = "next tab" })
 
 -- NVIM TREE
-keymap.set("n", "<leader>ft", ":NvimTreeToggle<CR>", { desc = "toggle NvimTree" })
-keymap.set("n", "<leader>fe", ":NvimTreeFocus<CR>", { desc = "focus NvimTree" })
+keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>", { desc = "nvim tree toggle", silent = true })
+keymap.set("n", "<leader>te", ":NvimTreeFocus<CR>", { desc = "nvim tree focus", silent = true })
+keymap.set("n", "<leader>tf", ":NvimTreeFindFile<CR>", { desc = "nvim tree focus file", silent = true })
 
 -- TELESCOPE
-keymap.set('n', '<leader>hk',  "<cmd>Telescope keymaps<cr>", { desc = "telescope keymaps" })
 -- g
 keymap.set("n", "<leader>gtC", "<cmd>Telescope git_commits<cr>", { desc = "telescope git commits" }) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 keymap.set("n", "<leader>gtc", "<cmd>Telescope git_bcommits<cr>", { desc = "telescope git current file commits" }) -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
@@ -28,7 +29,8 @@ keymap.set('n', '<leader>fc', ":Telescope current_buffer_fuzzy_find<CR>", { desc
 keymap.set('n', '<leader>fb', ":Telescope buffers<CR>", { desc = "telescope buffers" })
 keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "telescope help tags", noremap = true })
 keymap.set("n", "<leader>fd", ":Telescope file_browser<CR>", { desc = "telescope file browser", noremap = true })
-keymap.set("n", "<leader>fn", ":Telescope noice<CR>", { desc = "telescope noice history", noremap = true })
+-- keymap.set("n", "<leader>fn", ":Telescope noice<CR>", { desc = "telescope noice history", noremap = true })
+keymap.set('n', '<leader>fk', ":Telescope keymaps<CR>", { desc = "telescope keymaps" })
 -- r
 keymap.set('n', '<leader>rf', ":Telescope flutter commands<CR>", { desc = "telescope run flutter commands" })
 
@@ -36,23 +38,25 @@ keymap.set('n', '<leader>rf', ":Telescope flutter commands<CR>", { desc = "teles
 keymap.set("n", "<leader>lh", ":Lazy home<CR>", { desc = "lazy home" }) -- Display lazy home | lh = lazy home
 
 -- NOICE
-keymap.set("n", "<leader>nl", ":Noice last<CR>", { desc = "noice last" }) -- Display last noice message
+-- keymap.set("n", "<leader>nl", ":Noice last<CR>", { desc = "noice last" }) -- Display last noice message
 
 -- LSP
-keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "lsp restart" }) -- mapping to restart lsp if necessary
-keymap.set("n", "gf", ":Lspsaga lsp_finder<CR>",  { desc = "lspsaga finder" }) -- show definition, references
-keymap.set("n", "gD", ":lua vim.lsp.buf.declaration()<CR>",  { desc = "go to declaration" }) -- got to declaration
-keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>",  { desc = "go to definition" }) -- got to definition
-keymap.set("n", "gr", ":lua vim.lsp.buf.references()<CR>",  { desc = "go to references" }) -- got to references
-keymap.set("n", "gp", ":Lspsaga peek_definition<CR>",  { desc = "lspsaga peek definition" }) -- see definition and make edits in window
-keymap.set("n", "gi", ":lua vim.lsp.buf.implementation()<CR>",  { desc = "implementation" }) -- go to implementation
-keymap.set("n", "<A-CR>", ":Lspsaga code_action<CR>",  { desc = "lspsaga code action" }) -- see available code actions
-keymap.set("x", "<A-CR>", ":Lspsaga range_code_action<CR>",  { desc = "lspsaga range code action" }) -- see available code actions
-keymap.set("n", "<leader>lr", ":Lspsaga rename<CR>",  { desc = "lspsaga rename" }) -- smart rename
-keymap.set("n", "<leader>lo", ":Lspsaga outline<CR>", { desc = "lspsaga toggle outline" }) -- see outline on right hand side
-keymap.set("n", "<leader>ldc", ":Lspsaga show_cursor_diagnostics<CR>",  { desc = "lspsaga cursor diagnostic" }) -- show diagnostics for cursor
-keymap.set("n", "<leader>ldl", ":Lspsaga show_line_diagnostics<CR>",  { desc = "lspsaga line diagnostic" }) -- show  diagnostics for line
-keymap.set("n", "K", ":Lspsaga hover_doc<CR>",  { desc = "lspsaga show doc" }) -- show documentation for what is under cursor
+keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "lsp restart" })
+keymap.set("n", "gf", ":Lspsaga lsp_finder<CR>",  { desc = "lspsaga finder" })
+keymap.set("n", "gD", ":lua vim.lsp.buf.declaration()<CR>",  { desc = "go to declaration" })
+keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>",  { desc = "go to definition" })
+keymap.set("n", "gr", ":lua vim.lsp.buf.references()<CR>",  { desc = "go to references" })
+keymap.set("n", "gp", ":Lspsaga peek_definition<CR>",  { desc = "lspsaga peek definition" })
+keymap.set("n", "gi", ":lua vim.lsp.buf.implementation()<CR>",  { desc = "implementation" })
+keymap.set("n", "<A-CR>", ":Lspsaga code_action<CR>",  { desc = "lspsaga code action" })
+keymap.set("x", "<A-CR>", ":Lspsaga range_code_action<CR>",  { desc = "lspsaga range code action" })
+keymap.set("n", "<leader>lr", ":Lspsaga rename<CR>",  { desc = "lspsaga rename" })
+keymap.set("n", "<leader>lo", ":Lspsaga outline<CR>", { desc = "lspsaga toggle outline" })
+keymap.set("n", "<leader>ldc", ":Lspsaga show_cursor_diagnostics<CR>",  { desc = "lspsaga cursor diagnostic" })
+keymap.set("n", "<leader>ldl", ":Lspsaga show_line_diagnostics<CR>",  { desc = "lspsaga line diagnostic" })
+keymap.set("n", "K", ":Lspsaga hover_doc<CR>",  { desc = "lspsaga show doc" })
+-- keymap.set("i", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", { desc = "show function signature" })
+vim.api.nvim_set_keymap("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "show function signature" })
 keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>",  { desc = "lspsaga prev diagnostic" })
 keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>",  { desc = "lspsaga next diagnostic" })
 -- Diagnostic jump with filters such as only jumping to an error
@@ -66,21 +70,38 @@ end, { desc = "lspsaga prev error" })
 -- COPILOT
 keymap.set("n", "<leader>co", ":Copilot panel<CR>", { desc = "copilot panel" })
 
--- HARPOON
-keymap.set("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", { desc = "harpoon mark file", noremap = true })
-keymap.set("n", "<leader>hm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "harpoon menu", noremap = true })
-keymap.set("n", "<leader>h1", ":lua require('harpoon.ui').nav_file(1)<CR>", { desc = "harpoon file 1", noremap = true })
-keymap.set("n", "<leader>h2", ":lua require('harpoon.ui').nav_file(2)<CR>", { desc = "harpoon file 2", noremap = true })
-keymap.set("n", "<leader>h3", ":lua require('harpoon.ui').nav_file(3)<CR>", { desc = "harpoon file 3", noremap = true })
-keymap.set("n", "<leader>h4", ":lua require('harpoon.ui').nav_file(4)<CR>", { desc = "harpoon file 4", noremap = true })
-keymap.set("n", "<leader>h5", ":lua require('harpoon.ui').nav_file(5)<CR>", { desc = "harpoon file 5", noremap = true })
-keymap.set("n", "<leader>h6", ":lua require('harpoon.ui').nav_file(6)<CR>", { desc = "harpoon file 6", noremap = true })
-keymap.set("n", "<leader>h7", ":lua require('harpoon.ui').nav_file(7)<CR>", { desc = "harpoon file 7", noremap = true })
-keymap.set("n", "<leader>h8", ":lua require('harpoon.ui').nav_file(8)<CR>", { desc = "harpoon file 8", noremap = true })
-keymap.set("n", "<leader>h9", ":lua require('harpoon.ui').nav_file(9)<CR>", { desc = "harpoon file 9", noremap = true })
-keymap.set("n", "<leader>h0", ":lua require('harpoon.ui').nav_file(10)<CR>", { desc = "harpoon file 10", noremap = true })
-keymap.set("n", "]h", ":lua require('harpoon.ui').nav_next()<CR>", { desc = "harpoon next", noremap = true })
-keymap.set("n", "[h", ":lua require('harpoon.ui').nav_prev()<CR>", { desc = "harpoon prev", noremap = true })
+-- GRAPPLE
+keymap.set("n", "<leader>mm", ":lua require('grapple').popup_tags()<CR>", { desc = "grapple menu", silent = true })
+keymap.set("n", "<leader>mr", ":lua require('grapple').reset()<CR>", { desc = "grapple reset scope", silent = true })
+for i = 0, 5 do
+  keymap.set(
+    "n",
+    "<leader>" .. i,
+    ":lua require('grapple').select({key = " .. i .. "})<CR>",
+    { desc = "select mark " .. i, silent = true }
+  )
+end
+for i = 0, 5 do
+  keymap.set(
+    "n",
+    "<leader>m" .. i,
+    ":lua require('grapple').tag({key = " .. i .. "})<CR>",
+    { desc = "mark " .. i, silent = true }
+  )
+end
+-- keymap.set(
+--   "n",
+--   "m",
+--   ":lua require('grapple').tag({key = vim.fn.nr2char(vim.fn.getchar())})<CR>",
+--   { desc = "grapple mark X key", silent = true }
+-- )
+-- keymap.set(
+--   "n",
+--   "`",
+--   ":lua require('grapple').select({key = vim.fn.nr2char(vim.fn.getchar())})<CR>",
+--   { desc = "grapple select X mark", silent = true }
+-- )
+
 
 -- TMUX
 keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>", { desc = "window left", silent = true })

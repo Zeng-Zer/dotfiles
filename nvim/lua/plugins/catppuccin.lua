@@ -16,7 +16,7 @@ return {
           harpoon = true,
           mason = true,
           treesitter = true,
-          noice = true,
+          -- noice = true,
           native_lsp = {
             enabled = true,
             underlines = {

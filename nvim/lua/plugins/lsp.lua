@@ -42,6 +42,22 @@ return {
           })
         end,
       }
+
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, {
+          border = "rounded",
+          silent = true,
+          focusable = false
+        }
+      )
+
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, {
+          border = "rounded",
+          -- add the title in hover float window
+          title = ""
+        }
+      )
     end
   },
 }

@@ -2,7 +2,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     lazy = true,
-    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose" },
+    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose", "NvimTreeFindFile" },
     event = { "BufWinEnter" },
     config = function()
       local function my_on_attach(bufnr)
@@ -11,7 +11,7 @@ return {
         -- quit nvim if nvim is last opened buffer
         vim.api.nvim_create_autocmd("QuitPre", {
           callback = function()
-            require("noice.message.router").disable()
+            -- require("noice.message.router").disable()
 
             local invalid_win = {}
             local wins = vim.api.nvim_list_wins()
@@ -22,7 +22,7 @@ return {
               end
             end
 
-            require("noice.message.router").enable()
+            -- require("noice.message.router").enable()
 
             if #invalid_win == #wins - 1 then
               -- Should quit, so we close all invalid windows.
@@ -39,13 +39,17 @@ return {
 
       -- SETUP
       require("nvim-tree").setup({
+        view = {
+          width = 35,
+        },
         diagnostics = {
           enable = true
         },
         actions = {
           open_file = {
+            resize_window = true,
             window_picker = {
-              enable = false,
+              enable = true,
             },
           },
         },

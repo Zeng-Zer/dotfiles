@@ -6,7 +6,15 @@ return {
   { "NvChad/nvim-colorizer.lua", ft = { "css" } },
   -- editor
   {
-    "ThePrimeagen/harpoon",
+    'j-hui/fidget.nvim',
+    event = "VeryLazy",
+    config = function()
+      require("fidget").setup({
+        window = {
+          blend = 0,
+        },
+      })
+    end
   },
   {
     "nvim-zh/colorful-winsep.nvim",
