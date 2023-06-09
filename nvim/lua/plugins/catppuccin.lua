@@ -17,6 +17,10 @@ return {
           mason = true,
           treesitter = true,
           -- noice = true,
+          dap = {
+            enabled = true,
+            enable_ui = true,
+          },
           native_lsp = {
             enabled = true,
             underlines = {

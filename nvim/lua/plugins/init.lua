@@ -6,6 +6,16 @@ return {
   { "NvChad/nvim-colorizer.lua", ft = { "css" } },
   -- editor
   {
+    'jinh0/eyeliner.nvim',
+    lazy = false,
+    config = function()
+      require("eyeliner").setup({
+        highlight_on_key = true,
+        dim = true,
+      })
+    end
+  },
+  {
     'j-hui/fidget.nvim',
     event = "VeryLazy",
     config = function()
@@ -78,10 +88,6 @@ return {
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
-    config = function()
-      -- vim.g.tmux_navigator_save_on_switch = 1
-      -- vim.g.tmux_navigator_disable_when_zoomed = 1
-    end
   },
   {
     "dstein64/vim-startuptime",

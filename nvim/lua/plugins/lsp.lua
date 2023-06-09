@@ -6,8 +6,18 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
       "williamboman/mason-lspconfig.nvim",
+      { "folke/neodev.nvim", opts = {} }
     },
     config = function()
+      require("neodev").setup({
+        library = {
+          plugins = {
+            "nvim-dap-ui"
+          },
+          types = true
+        },
+      })
+
       require("mason").setup({
         ui = {
           border = "rounded",

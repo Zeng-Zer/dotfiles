@@ -1,5 +1,15 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      local luasnip = require("luasnip")
+      vim.keymap.set("i", "<Tab>", function() luasnip.jump(1) end, { silent = true })
+      vim.keymap.set("i", "<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
+      vim.keymap.set("s", "<Tab>", function() luasnip.jump(1) end, { silent = true })
+      vim.keymap.set("s", "<S-Tab>", function() luasnip.jump(-1) end, { silent = true })
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {

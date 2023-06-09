@@ -3,7 +3,9 @@ local keymap = vim.keymap
 -- GENERAL KEYMAPS
 keymap.set({"n", "x", "v", "i"}, "<F1>", "<nop>") -- Remove f1 help
 keymap.set({"n", "x", "v", "i"}, "<F3>", ":MaximizerToggle<CR>") -- Toggle maximize
-keymap.set("n", "<C-w>c", ":split<CR>") -- Remove f1 help
+keymap.set("n", "<C-w>c", ":split<CR>")
+keymap.set({"n", "i"}, "H", "^")
+keymap.set({"n", "i"}, "L", "$")
 
 -- TABS
 keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "open tab" })
@@ -28,11 +30,9 @@ keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>", { desc = "telescope li
 keymap.set('n', '<leader>fc', ":Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope current buffer" })
 keymap.set('n', '<leader>fb', ":Telescope buffers<CR>", { desc = "telescope buffers" })
 keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "telescope help tags", noremap = true })
-keymap.set("n", "<leader>fd", ":Telescope file_browser<CR>", { desc = "telescope file browser", noremap = true })
--- keymap.set("n", "<leader>fn", ":Telescope noice<CR>", { desc = "telescope noice history", noremap = true })
+keymap.set("n", "<leader>ft", ":Telescope file_browser<CR>", { desc = "telescope file browser", noremap = true })
 keymap.set('n', '<leader>fk', ":Telescope keymaps<CR>", { desc = "telescope keymaps" })
--- r
-keymap.set('n', '<leader>rf', ":Telescope flutter commands<CR>", { desc = "telescope run flutter commands" })
+-- keymap.set("n", "<leader>fn", ":Telescope noice<CR>", { desc = "telescope noice history", noremap = true })
 
 -- LAZY
 keymap.set("n", "<leader>lh", ":Lazy home<CR>", { desc = "lazy home" }) -- Display lazy home | lh = lazy home
@@ -52,11 +52,11 @@ keymap.set("n", "<A-CR>", ":Lspsaga code_action<CR>",  { desc = "lspsaga code ac
 keymap.set("x", "<A-CR>", ":Lspsaga range_code_action<CR>",  { desc = "lspsaga range code action" })
 keymap.set("n", "<leader>lr", ":Lspsaga rename<CR>",  { desc = "lspsaga rename" })
 keymap.set("n", "<leader>lo", ":Lspsaga outline<CR>", { desc = "lspsaga toggle outline" })
-keymap.set("n", "<leader>ldc", ":Lspsaga show_cursor_diagnostics<CR>",  { desc = "lspsaga cursor diagnostic" })
-keymap.set("n", "<leader>ldl", ":Lspsaga show_line_diagnostics<CR>",  { desc = "lspsaga line diagnostic" })
+keymap.set("n", "<leader>lc", ":Lspsaga show_cursor_diagnostics<CR>",  { desc = "lspsaga cursor diagnostic" })
+keymap.set("n", "<leader>lC", ":Lspsaga show_line_diagnostics<CR>",  { desc = "lspsaga line diagnostic" })
 keymap.set("n", "K", ":Lspsaga hover_doc<CR>",  { desc = "lspsaga show doc" })
--- keymap.set("i", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", { desc = "show function signature" })
-vim.api.nvim_set_keymap("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "show function signature" })
+-- <alt-=> to show signature help
+keymap.set("i", "≠", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "show function signature" })
 keymap.set("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>",  { desc = "lspsaga prev diagnostic" })
 keymap.set("n", "]d", ":Lspsaga diagnostic_jump_next<CR>",  { desc = "lspsaga next diagnostic" })
 -- Diagnostic jump with filters such as only jumping to an error
@@ -66,6 +66,24 @@ end, { desc = "lspsaga next error" })
 keymap.set("n", "gE", function()
   require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end, { desc = "lspsaga prev error" })
+
+-- DEBUGGER
+keymap.set("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", { desc = "debugger toggle breakpoint" })
+keymap.set("n", "<leader>dB", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { desc = "debugger set breakpoint" })
+keymap.set("n", "<leader>dl", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", { desc = "debugger log point" })
+keymap.set("n", "<leader>dc", ":lua require('dap').continue()<CR>", { desc = "debugger continue" })
+keymap.set("n", "<leader>dC", ":lua require('dap').run_to_cursor()<CR>", { desc = "debugger run to cursor" })
+keymap.set("n", "<leader>di", ":lua require('dap').step_into()<CR>", { desc = "debugger step into" })
+keymap.set("n", "<leader>do", ":lua require('dap').step_over()<CR>", { desc = "debugger step over" })
+keymap.set("n", "<leader>ds", ":lua require('dap').stop()<CR>", { desc = "debugger stop" })
+keymap.set("n", "<leader>dr", ":lua require('dapui').float_element('repl', {enter = true, position = 'center'})<CR>", { desc = "debugger open repl" })
+keymap.set("n", "<leader>du", ":lua require('dapui').toggle()<CR>", { desc = "debugger toggle ui" })
+keymap.set({"n", "v"}, "<leader>dk", ":lua require('dapui').eval(nil, {enter = true})<CR>", { desc = "debugger hover", silent = true })
+keymap.set("n", "<leader>dtc", ":lua require('telescope').extensions.dap.commands()<CR>", { desc = "telescope dap commands" })
+keymap.set("n", "<leader>dtC", ":lua require('telescope').extensions.dap.configurations()<CR>", { desc = "telescope dap configurations" })
+keymap.set("n", "<leader>dtb", ":lua require('telescope').extensions.dap.list_breakpoints()<CR>", { desc = "telescope dap breakpoints" })
+keymap.set("n", "<leader>dtv", ":lua require('telescope').extensions.dap.variables()<CR>", { desc = "telescope dap variables" })
+keymap.set("n", "<leader>dtf", ":lua require('telescope').extensions.dap.frames()<CR>", { desc = "telescope dap frames" })
 
 -- COPILOT
 keymap.set("n", "<leader>co", ":Copilot panel<CR>", { desc = "copilot panel" })
@@ -89,18 +107,6 @@ for i = 0, 5 do
     { desc = "mark " .. i, silent = true }
   )
 end
--- keymap.set(
---   "n",
---   "m",
---   ":lua require('grapple').tag({key = vim.fn.nr2char(vim.fn.getchar())})<CR>",
---   { desc = "grapple mark X key", silent = true }
--- )
--- keymap.set(
---   "n",
---   "`",
---   ":lua require('grapple').select({key = vim.fn.nr2char(vim.fn.getchar())})<CR>",
---   { desc = "grapple select X mark", silent = true }
--- )
 
 
 -- TMUX
