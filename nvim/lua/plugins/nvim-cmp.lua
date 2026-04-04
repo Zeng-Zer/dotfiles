@@ -70,10 +70,10 @@ return {
           ["<C-p>"] = cmp.config.disable,
           ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), -- previous suggestion
           ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), -- next suggestion
-          ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- previous suggestion
-          ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- next suggestion
-          ["<C-b>"] = cmp.mapping.scroll_docs(-5),
-          ["<C-x>"] = cmp.mapping.scroll_docs(5),
+          -- ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- previous suggestion
+          -- ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 4 }), -- next suggestion
+          ["<C-u>"] = cmp.mapping.scroll_docs(-5),
+          ["<C-d>"] = cmp.mapping.scroll_docs(5),
           -- toggle completion menu because of copilot
           ["<C-e>"] = function()
             if cmp.visible() then

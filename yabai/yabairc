@@ -51,9 +51,17 @@ yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off 
 yabai -m rule --add app="^Archive Utility$" manage=off 
 yabai -m rule --add app="^Spotify$" manage=off 
+yabai -m rule --add app="^Shadow PC$" manage=off 
+yabai -m rule --add app="^Simulator$" manage=off 
+yabai -m rule --add app="^Discord$" manage=off 
+yabai -m rule --add app="^Preview$" manage=off 
+yabai -m rule --add app="^Steam$" manage=off 
+yabai -m rule --add app="^PathOfExileClient$" manage=off 
 
 yabai -m rule --add title="^About This Mac$" manage=off
 yabai -m rule --add title="^Android Emulator*" manage=off 
 yabai -m rule --add title="^CrossOver$" manage=off 
+yabai -m rule --add title="^Steam*$" manage=off 
+yabai -m rule --add title="^PathOfExileClient$" manage=off 
 
 echo "yabai configuration loaded.."

@@ -4,8 +4,8 @@ local keymap = vim.keymap
 keymap.set({"n", "x", "v", "i"}, "<F1>", "<nop>") -- Remove f1 help
 keymap.set({"n", "x", "v", "i"}, "<F3>", ":MaximizerToggle<CR>") -- Toggle maximize
 keymap.set("n", "<C-w>c", ":split<CR>")
-keymap.set({"n", "i"}, "H", "^")
-keymap.set({"n", "i"}, "L", "$")
+keymap.set({"n", "v"}, "H", "^")
+keymap.set({"n", "v"}, "L", "$")
 
 -- TABS
 keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "open tab" })

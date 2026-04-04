@@ -1,7 +1,6 @@
 tmux/plugins/
 raycast
-fish/fish_variables
-fish/fishd.tmp.*
+fish
 nvim/lazy-lock.json
 tmuxinator
 configstore
@@ -10,3 +9,10 @@ alacritty
 Ryujinx
 github-copilot
 spicetify
+frida
+kilo
+nicotine
+wireshark
+.agent-shell
+opencode
+emacs

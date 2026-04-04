@@ -81,25 +81,25 @@ return {
       })
 
       -- Show if file has been modified in the winbar
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('LspsagaSymbols', { clear = false }),
-        callback = function(opt)
-          local winbar = vim.o.winbar
-          local winid = vim.api.nvim_get_current_win()
-          if vim.api.nvim_get_current_buf() ~= opt.buf then
-            return
-          end
-
-          local readonly = "%{&readonly?\"🔒 \":\"\"}"
-          local modified = "%{&modified?\" ●\":\"\"}"
-
-          vim.api.nvim_set_option_value(
-            'winbar',
-            readonly .. winbar .. modified,
-            { scope = 'local', win = winid }
-          )
-        end
-      })
+      -- vim.api.nvim_create_autocmd('LspAttach', {
+      --   group = vim.api.nvim_create_augroup('LspsagaSymbols', { clear = false }),
+      --   callback = function(opt)
+      --     local winbar = vim.o.winbar
+      --     local winid = vim.api.nvim_get_current_win()
+      --     if vim.api.nvim_get_current_buf() ~= opt.buf then
+      --       return
+      --     end
+      --
+      --     local readonly = "%{&readonly?\"🔒 \":\"\"}"
+      --     local modified = "%{&modified?\" ●\":\"\"}"
+      --
+      --     vim.api.nvim_set_option_value(
+      --       'winbar',
+      --       readonly .. winbar .. modified,
+      --       { scope = 'local', win = winid }
+      --     )
+      --   end
+      -- })
     end
   },
 }

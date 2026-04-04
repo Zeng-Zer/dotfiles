@@ -17,6 +17,7 @@ return {
   },
   {
     'j-hui/fidget.nvim',
+    tag = "legacy",
     event = "VeryLazy",
     config = function()
       require("fidget").setup({
@@ -88,6 +89,9 @@ return {
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
+    config = function ()
+      vim.g.tmux_navigator_preserve_zoom = 1
+    end
   },
   {
     "dstein64/vim-startuptime",

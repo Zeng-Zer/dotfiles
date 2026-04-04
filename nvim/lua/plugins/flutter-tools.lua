@@ -31,7 +31,7 @@ return {
       require("flutter-tools").setup({
         dev_log = {
           enabled = true,
-          open_cmd = "15new",
+          open_cmd = "leftabove 100vnew",
         },
         debugger = {
           enabled = true,

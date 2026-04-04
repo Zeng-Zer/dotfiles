@@ -49,11 +49,11 @@ return {
               ["<C-c>"] = actions.select_horizontal,
               ["<C-k>"] = actions.move_selection_previous,
               ["<C-j>"] = actions.move_selection_next,
-              ["<C-u>"] = shift_previous,
-              ["<C-d>"] = shift_next,
+              -- ["<C-u>"] = shift_previous,
+              -- ["<C-d>"] = shift_next,
               ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-              ["<C-b>"] = actions.preview_scrolling_up,
-              ["<C-x>"] = actions.preview_scrolling_down,
+              ["<C-u>"] = actions.preview_scrolling_up,
+              ["<C-d>"] = actions.preview_scrolling_down,
               ["<esc>"] = actions.close,
             }
           }
